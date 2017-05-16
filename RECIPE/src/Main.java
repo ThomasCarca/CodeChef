@@ -1,3 +1,7 @@
+/*
+ * Created by Thomas Boulbes
+ */
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -6,8 +10,19 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
+
+/**
+ * The Class Main.
+ */
 public class Main {
 
+	/**
+	 * Are all dividable.
+	 *
+	 * @param values the values
+	 * @param div the div
+	 * @return true, if successful
+	 */
 	public static boolean areAllDividable(List<Integer> values, int div) {
 		int i = values.size() - 1;
 		while (i >= 0 && values.get(i) % div == 0) {
@@ -16,6 +31,12 @@ public class Main {
 		return i == -1;
 	}
 	
+	/**
+	 * Prints the result.
+	 *
+	 * @param values the values
+	 * @param printer the printer
+	 */
 	public static void printResult(List<Integer> values, PrintWriter printer) {
 		for (int i = 0; i < values.size(); i++) {
 			printer.print(values.get(i));
@@ -23,6 +44,12 @@ public class Main {
 		}
 	}
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public static void main(String[] args) throws IOException {
 		Scanner sc = new Scanner(System.in);
 		PrintWriter stdout = new PrintWriter(System.out);

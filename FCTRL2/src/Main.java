@@ -1,3 +1,6 @@
+/*
+ * Created by Thomas Boulbes
+ */
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigInteger;
@@ -6,8 +9,18 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Main.
+ */
 public class Main {
 	
+	/**
+	 * Compute.
+	 *
+	 * @param max the max
+	 * @return the big integer[]
+	 */
 	public static BigInteger[] compute(int max){
 		BigInteger[] nFact = new BigInteger[max];
 		//First value is 1! = 1.
@@ -18,6 +31,12 @@ public class Main {
 		return nFact;
 	}
 	
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public static void main(String[] args) throws IOException {
 		//Initiazing I/O
 		Scanner sc = new Scanner(System.in);

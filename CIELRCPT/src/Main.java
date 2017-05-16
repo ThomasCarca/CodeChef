@@ -1,9 +1,22 @@
+/*
+ * Created by Thomas Boulbes
+ */
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Main.
+ */
 public class Main {
 	
+	/**
+	 * Log 2 nlz.
+	 *
+	 * @param bits the bits
+	 * @return the int
+	 */
 	public static int log2nlz( int bits )
 	{
 	    if( bits == 0 )
@@ -11,6 +24,13 @@ public class Main {
 	    return 31 - Integer.numberOfLeadingZeros( bits );
 	}
 	
+	/**
+	 * Pow.
+	 *
+	 * @param a the a
+	 * @param b the b
+	 * @return the double
+	 */
 	public static double pow(double a, int b) {
 	    double result = 1;
 	    while(b > 0) {
@@ -26,6 +46,12 @@ public class Main {
 
 	}
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public static void main(String[] args) throws IOException {
 		Scanner sc = new Scanner(System.in);
 		PrintWriter stdout = new PrintWriter(System.out);

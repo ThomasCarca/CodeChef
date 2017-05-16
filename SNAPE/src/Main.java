@@ -1,9 +1,23 @@
+/*
+ * Created by Thomas Boulbes
+ */
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Main.
+ */
 public class Main {
 
+	/**
+	 * Pow.
+	 *
+	 * @param a the a
+	 * @param b the b
+	 * @return the long
+	 */
 	public static long pow(long a, long b) {
 		long re = 1;
 		while (b > 0) {
@@ -16,6 +30,12 @@ public class Main {
 		return re;
 	}
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public static void main(String[] args) throws IOException {
 		Scanner sc = new Scanner(System.in);
 		PrintWriter stdout = new PrintWriter(System.out);
