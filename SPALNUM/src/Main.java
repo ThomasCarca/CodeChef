@@ -12,6 +12,12 @@ import java.util.Scanner;
  */
 public class Main {
 	
+	/**
+	 * Checks if is palindrome.
+	 *
+	 * @param val the val
+	 * @return true, if is palindrome
+	 */
 	public static boolean isPalindrome(int val) {
 		String value = Integer.toString(val);
 		return value.equals(new StringBuilder(value).reverse().toString());
