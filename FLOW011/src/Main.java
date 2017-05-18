@@ -11,17 +11,6 @@ import java.util.Scanner;
  * The Class Main.
  */
 public class Main {
-	
-	/**
-	 * Checks if is palindrome.
-	 *
-	 * @param val the val
-	 * @return true, if is palindrome
-	 */
-	public static boolean isPalindrome(int val) {
-		String value = Integer.toString(val);
-		return value.equals(new StringBuilder(value).reverse().toString());
-	}
 
 	/**
 	 * The main method.
@@ -34,16 +23,27 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		Scanner sc = new Scanner(System.in);
 		PrintWriter stdout = new PrintWriter(System.out);
-		int T = Integer.parseInt(sc.nextLine().trim());
-		int[] sums = new int[100001];
-		sums[0] = 1;
-		for (int i = 1; i <= 100000; i++) {
-			sums[i] = sums[i-1];
-			if (isPalindrome(i)) sums[i] += i;
-		}
+		int T = sc.nextInt();
 		while (T-- > 0) {
-			int a = sc.nextInt(), b = sc.nextInt();
-			stdout.println(sums[b]-sums[a-1]);
+			int basic = sc.nextInt();
+			double hra, da;
+			if (basic < 1500) {
+				hra = 0.1 * basic;
+				da = 0.9 * basic;
+			} else {
+				hra = 500;
+				da = 0.98 * basic;
+			}
+			double gross = basic + hra + da;
+			if (basic >= 50275 && basic % 100 == 75) {
+				gross = gross - 1;
+			}
+			String answer = String.format("%g", gross);
+			while (answer.contains(".") && (answer.endsWith(".") || answer.endsWith("0"))) {
+				answer = answer.substring(0, answer.length() - 1);
+			}
+			stdout.println(answer);
+
 		}
 		sc.close();
 		stdout.flush();

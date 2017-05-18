@@ -11,17 +11,6 @@ import java.util.Scanner;
  * The Class Main.
  */
 public class Main {
-	
-	/**
-	 * Checks if is palindrome.
-	 *
-	 * @param val the val
-	 * @return true, if is palindrome
-	 */
-	public static boolean isPalindrome(int val) {
-		String value = Integer.toString(val);
-		return value.equals(new StringBuilder(value).reverse().toString());
-	}
 
 	/**
 	 * The main method.
@@ -34,17 +23,12 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		Scanner sc = new Scanner(System.in);
 		PrintWriter stdout = new PrintWriter(System.out);
-		int T = Integer.parseInt(sc.nextLine().trim());
-		int[] sums = new int[100001];
-		sums[0] = 1;
-		for (int i = 1; i <= 100000; i++) {
-			sums[i] = sums[i-1];
-			if (isPalindrome(i)) sums[i] += i;
-		}
+		int T = sc.nextInt(), even = 0, total = T;
 		while (T-- > 0) {
-			int a = sc.nextInt(), b = sc.nextInt();
-			stdout.println(sums[b]-sums[a-1]);
+			int s = sc.nextInt();
+			if (s%2==0) even++;
 		}
+		stdout.println(even>total-even? "READY FOR BATTLE" : "NOT READY");
 		sc.close();
 		stdout.flush();
 		stdout.close();
