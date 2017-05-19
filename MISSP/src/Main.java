@@ -25,9 +25,9 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = sc.nextInt();
 		while (T-- > 0) {
-			int n = sc.nextInt(), m = sc.nextInt(), k = sc.nextInt();
-			int min = Math.abs(n-m)-k;
-			stdout.println(min < 0 ? 0 : min);
+			int n = sc.nextInt();
+			
+			stdout.println();
 		}
 		sc.close();
 		stdout.flush();
