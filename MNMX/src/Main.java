@@ -26,8 +26,12 @@ public class Main {
 		int T = sc.nextInt();
 		while (T-- > 0) {
 			int n = sc.nextInt();
-			
-			stdout.println();
+			long min = Integer.MAX_VALUE;
+			for (int i = 0; i < n; i++) {
+				long v = sc.nextInt();
+				if (v < min) min = v;
+			}
+			stdout.println(min*(n-1));
 		}
 		sc.close();
 		stdout.flush();

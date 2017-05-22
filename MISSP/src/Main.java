@@ -4,6 +4,8 @@
  */
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Scanner;
 
 // TODO: Auto-generated Javadoc
@@ -26,8 +28,17 @@ public class Main {
 		int T = sc.nextInt();
 		while (T-- > 0) {
 			int n = sc.nextInt();
-			
-			stdout.println();
+			 HashSet<Integer> dolls = new HashSet<Integer>();
+			for (int i = 0; i < n; i++) {
+				int v = sc.nextInt();
+				if (dolls.contains(v)) {
+					dolls.remove(v);
+				} else {
+					dolls.add(v);
+				}
+			}
+			Iterator<Integer> iter = dolls.iterator();
+	        stdout.println(iter.next());
 		}
 		sc.close();
 		stdout.flush();

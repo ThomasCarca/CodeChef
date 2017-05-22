@@ -11,6 +11,14 @@ import java.util.Scanner;
  * The Class Main.
  */
 public class Main {
+	
+	public static long gcd(long a, long b) {
+		if (b == 0) {
+			return a;
+		} else {
+			return gcd(b, a % b);
+		}
+	}
 
 	/**
 	 * The main method.
@@ -25,9 +33,8 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = sc.nextInt();
 		while (T-- > 0) {
-			int n = sc.nextInt();
-			
-			stdout.println();
+			long n = sc.nextLong(), m = sc.nextLong(), gcd = gcd(Math.max(n, m), Math.min(n, m));
+			stdout.println((n/gcd)*(m/gcd));
 		}
 		sc.close();
 		stdout.flush();
