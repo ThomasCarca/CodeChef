@@ -12,6 +12,13 @@ import java.util.Scanner;
  */
 public class Main {
 	
+	/**
+	 * Gcd.
+	 *
+	 * @param a the a
+	 * @param b the b
+	 * @return the long
+	 */
 	public static long gcd(long a, long b) {
 		if (b == 0) {
 			return a;
