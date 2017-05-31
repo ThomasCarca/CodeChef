@@ -4,6 +4,7 @@
  */
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashSet;
 import java.util.Scanner;
 
 // TODO: Auto-generated Javadoc
@@ -25,9 +26,18 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = sc.nextInt();
 		while (T-- > 0) {
-			int n = sc.nextInt();
-			
-			stdout.println();
+			int n = sc.nextInt(), x = sc.nextInt(), y = sc.nextInt();
+			HashSet<Integer> unsafe = new HashSet<Integer>();
+			for (int i = 0; i < n; i++) {
+				int house = sc.nextInt();
+				int min = house - x * y >= 1 ? house - x * y : 1;
+				int max = house + x * y <= 100 ? house + x * y : 100;
+				for (int covered = min; covered <= max; covered++) {
+					if (!unsafe.contains(covered))
+						unsafe.add(covered);
+				}
+			}
+			stdout.println(100 - unsafe.size());
 		}
 		sc.close();
 		stdout.flush();

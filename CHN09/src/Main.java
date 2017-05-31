@@ -23,16 +23,12 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		Scanner sc = new Scanner(System.in);
 		PrintWriter stdout = new PrintWriter(System.out);
-		int T = sc.nextInt();
+		int T = Integer.parseInt(sc.nextLine().trim());
 		while (T-- > 0) {
-			int n = sc.nextInt();
-			int ans = 0;
-			for (int i = 1; i <= n; i++) {
-				sc.nextInt();
-				sc.nextInt();
-				ans ^= i;
-			}
-			stdout.println(ans);
+			String balloons = sc.nextLine().trim();
+			int countA = balloons.length() - balloons.replace("a", "").length();
+			int countB = balloons.length() - balloons.replace("b", "").length();
+			stdout.println(Math.min(countA, countB));
 		}
 		sc.close();
 		stdout.flush();
