@@ -14,6 +14,12 @@ import java.util.StringTokenizer;
  */
 public class Main {
 
+	/**
+	 * Count.
+	 *
+	 * @param table the table
+	 * @return the int
+	 */
 	private static int count(int[] table) {
 		int count = 0;
 
