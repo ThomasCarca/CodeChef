@@ -27,17 +27,10 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = r.nextInt();
 		while (T-- > 0) {
-			long n = r.nextLong(), k = r.nextInt(), ans = 0;
-			for (int i = 0; i < n; i++) {
-				long bucket = r.nextLong();
-				long rest = bucket % k;
-				if (bucket >= k) {
-					ans += Math.min(rest, k-rest);
-				} else {
-					ans += k-rest;
-				}
-			}
-			stdout.println(ans);
+			int n = r.nextInt();
+			
+			
+			
 		}
 		stdout.flush();
 		stdout.close();
@@ -48,15 +41,15 @@ public class Main {
 	////////////////// | READER | ////////////////////
 	////////////////// +--------+ ////////////////////
 	//////////////////////////////////////////////////
-	
+
 	/**
 	 * The Class FastReader.
 	 */
 	static class FastReader {
-		
+
 		/** The br. */
 		BufferedReader br;
-		
+
 		/** The st. */
 		StringTokenizer st;
 

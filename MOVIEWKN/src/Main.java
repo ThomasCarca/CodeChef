@@ -27,17 +27,20 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = r.nextInt();
 		while (T-- > 0) {
-			long n = r.nextLong(), k = r.nextInt(), ans = 0;
+			int n = r.nextInt(), bI = 0;
+			int[][] movies = new int[n][2];
+			for (int i = 0; i < n; i++)
+				movies[i][0] = r.nextInt();
 			for (int i = 0; i < n; i++) {
-				long bucket = r.nextLong();
-				long rest = bucket % k;
-				if (bucket >= k) {
-					ans += Math.min(rest, k-rest);
-				} else {
-					ans += k-rest;
+				movies[i][1] = r.nextInt();
+				int cL = movies[i][0], cR = movies[i][1], cS = cL * cR;
+				int bL = movies[bI][0], bR = movies[bI][1], bS = bL * bR;
+
+				if (cS > bS || (cS == bS && cR > bR)) {
+					bI = i;
 				}
 			}
-			stdout.println(ans);
+			stdout.println(bI + 1);
 		}
 		stdout.flush();
 		stdout.close();
@@ -48,15 +51,15 @@ public class Main {
 	////////////////// | READER | ////////////////////
 	////////////////// +--------+ ////////////////////
 	//////////////////////////////////////////////////
-	
+
 	/**
 	 * The Class FastReader.
 	 */
 	static class FastReader {
-		
+
 		/** The br. */
 		BufferedReader br;
-		
+
 		/** The st. */
 		StringTokenizer st;
 

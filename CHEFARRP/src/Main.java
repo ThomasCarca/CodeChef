@@ -14,6 +14,22 @@ import java.util.StringTokenizer;
  */
 public class Main {
 
+	private static int count(int[] table) {
+		int count = 0;
+
+		for (int i = 0; i < table.length; i++) {
+			int sum = 0, product = 1;
+			for (int j = i; j < table.length; j++) {
+				sum += table[j];
+				product *= table[j];
+
+				if (product == sum)
+					count++;
+			}
+		}
+		return count;
+	}
+
 	/**
 	 * The main method.
 	 *
@@ -27,17 +43,11 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = r.nextInt();
 		while (T-- > 0) {
-			long n = r.nextLong(), k = r.nextInt(), ans = 0;
-			for (int i = 0; i < n; i++) {
-				long bucket = r.nextLong();
-				long rest = bucket % k;
-				if (bucket >= k) {
-					ans += Math.min(rest, k-rest);
-				} else {
-					ans += k-rest;
-				}
-			}
-			stdout.println(ans);
+			int n = r.nextInt();
+			int[] table = new int[n];
+			for (int i = 0; i < n; i++)
+				table[i] = r.nextInt();
+			stdout.println(count(table));
 		}
 		stdout.flush();
 		stdout.close();
@@ -48,15 +58,15 @@ public class Main {
 	////////////////// | READER | ////////////////////
 	////////////////// +--------+ ////////////////////
 	//////////////////////////////////////////////////
-	
+
 	/**
 	 * The Class FastReader.
 	 */
 	static class FastReader {
-		
+
 		/** The br. */
 		BufferedReader br;
-		
+
 		/** The st. */
 		StringTokenizer st;
 
