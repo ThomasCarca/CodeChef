@@ -6,6 +6,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.StringTokenizer;
 
 // TODO: Auto-generated Javadoc
@@ -22,15 +25,38 @@ public class Main {
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
+	/**
+	 * @param args
+	 * @throws IOException
+	 */
 	public static void main(String[] args) throws IOException {
 		FastReader r = new FastReader();
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = r.nextInt();
 		while (T-- > 0) {
-			int n = r.nextInt();
-			
-			
-			
+			int n = r.nextInt(), k = r.nextInt();
+			String[] dictionnary = r.nextLine().split("\\s+");
+			boolean[] used = new boolean[n];
+			Arrays.fill(used, false);
+			List<List<String>> sentences = new ArrayList<List<String>>();
+			for (int i = 0; i < k; i++) {
+				List<String> sentence = Arrays.asList(r.nextLine().split("\\s+"));
+				sentences.add(sentence);
+			}
+			for (int i = 0; i < n; i++) {
+				String word = dictionnary[i];
+				for (List<String> s : sentences) {
+					if (used[i]) {
+						break;
+					} else {
+						used[i] = s.contains(word);
+					}
+				}
+			}
+			for (int i = 0; i < n; i++) {
+				stdout.print((used[i] ? "YES" : "NO") + (i == n - 1 ? "" : " "));
+			}
+			stdout.println();
 		}
 		stdout.flush();
 		stdout.close();

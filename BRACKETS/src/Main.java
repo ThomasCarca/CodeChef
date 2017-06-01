@@ -27,10 +27,19 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = r.nextInt();
 		while (T-- > 0) {
-			int n = r.nextInt();
-			
-			
-			
+			String brackets = r.nextLine();
+			int balance = 0, maxBalance = 0, len = brackets.length();
+			for (int i = 0; i < len; i++) {
+				if (brackets.charAt(i) == '(') {
+					balance++;
+				} else {
+					balance--;
+				}
+					maxBalance = Math.max(balance, maxBalance);
+			}
+			String ans = new String(new char[maxBalance]).replace("\0", "(");
+			stdout.print(ans);
+			stdout.println(ans.replace("(", ")"));
 		}
 		stdout.flush();
 		stdout.close();

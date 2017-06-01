@@ -27,10 +27,18 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = r.nextInt();
 		while (T-- > 0) {
-			int n = r.nextInt();
-			
-			
-			
+			int n = r.nextInt(), red = 0, green = 0, blue = 0;
+			String rooms = r.nextLine();
+			for (int i = 0; i < n; i++) {
+				if (rooms.charAt(i) == 'R') {
+					red++;
+				} else if (rooms.charAt(i) == 'G') {
+					green++;
+				} else {
+					blue++;
+				}
+			}
+			stdout.println(Math.min(n - red, Math.min(n - blue, n - green)));
 		}
 		stdout.flush();
 		stdout.close();

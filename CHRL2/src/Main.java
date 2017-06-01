@@ -25,13 +25,34 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		FastReader r = new FastReader();
 		PrintWriter stdout = new PrintWriter(System.out);
-		int T = r.nextInt();
-		while (T-- > 0) {
-			int n = r.nextInt();
-			
-			
-			
+		String word = r.nextLine();
+		int c = 0, ch = 0, che = 0, chef = 0;
+		for (int i = 0; i < word.length(); i++) {
+			switch (word.charAt(i)) {
+			case 'C':
+				c++;
+				break;
+			case 'H':
+				if (c>0) {
+					c--;
+					ch++;
+				}
+				break;
+			case 'E':
+				if (ch>0) {
+					ch--;
+					che++;
+				}
+				break;
+			case 'F':
+				if (che>0) {
+					che--;
+					chef++;
+				}
+				break;
+			}
 		}
+		stdout.println(chef);
 		stdout.flush();
 		stdout.close();
 	}

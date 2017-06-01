@@ -27,10 +27,16 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = r.nextInt();
 		while (T-- > 0) {
-			int n = r.nextInt();
-			
-			
-			
+			int n = r.nextInt(), count = 0;
+			long[] time = new long[n+1];
+			for (int i = 1; i <= n; i++)
+				time[i] = r.nextLong();
+			for (int i = 0; i < n; i++) {
+				long unit = time[i + 1] - time[i];
+				if (unit >= r.nextLong()) count++;
+			}
+			stdout.println(count);
+
 		}
 		stdout.flush();
 		stdout.close();
