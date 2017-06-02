@@ -6,7 +6,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.StringTokenizer;
 
 // TODO: Auto-generated Javadoc
@@ -16,6 +17,16 @@ import java.util.StringTokenizer;
 public class Main {
 
 	public static final long MOD = 1000000007;
+
+	public static long sumFiltered(long[] full, long y) {
+		long total = 0;
+		for (int i = 0; i < full.length; i++) {
+			long val = full[i];
+			if (val <= y)
+				total += val + y;
+		}
+		return total;
+	}
 
 	/**
 	 * The main method.
@@ -41,16 +52,9 @@ public class Main {
 				c[i] = rdr.nextLong();
 			for (int i = 0; i < q; i++) {
 				long y = b[i];
-				long[] af = Arrays.stream(a).filter(val -> val <= y).toArray();
-				long[] cf = Arrays.stream(c).filter(val -> val <= y).toArray();
-				int pf = af.length, rf = cf.length;
-				for (int j = 0; j < pf; j++) {
-					long x = af[j];
-					for (int k = 0; k < rf; k++) {
-						long z = cf[k];
-						total = (total + (((x + y) % MOD) * ((y + z) % MOD)) % MOD) % MOD;
-					}
-				}
+				long xy = sumFiltered(a, y) % MOD;
+				long yz = sumFiltered(c, y) % MOD;
+				total = (total + (xy * yz) % MOD) % MOD;
 			}
 			stdout.println(total);
 		}
