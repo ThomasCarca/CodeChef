@@ -14,8 +14,16 @@ import java.util.StringTokenizer;
  */
 public class Main {
 
+	/** The Constant MOD. */
 	public static final long MOD = 1000000007;
 
+	/**
+	 * Sum filtered.
+	 *
+	 * @param full the full
+	 * @param y the y
+	 * @return the long
+	 */
 	public static long sumFiltered(long[] full, long y) {
 		long total = 0;
 		for (int i = 0; i < full.length; i++) {
