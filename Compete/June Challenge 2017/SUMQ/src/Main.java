@@ -14,15 +14,15 @@ import java.util.StringTokenizer;
  */
 public class Main {
 
-	/** The Constant MOD. */
+	/** The Constant modulo = 10^9+7. */
 	public static final long MOD = 1000000007;
 
 	/**
 	 * Sum filtered.
 	 *
-	 * @param full the full
-	 * @param y the y
-	 * @return the long
+	 * @param full the complete array of value
+	 * @param y the value that any other value must not exceed
+	 * @return the sum between each (val+y) where val is in full and val <= y
 	 */
 	public static long sumFiltered(long[] full, long y) {
 		long total = 0;
@@ -79,10 +79,10 @@ public class Main {
 	 */
 	static class FastReader {
 
-		/** The br. */
+		/** The BufferedReader. */
 		BufferedReader br;
 
-		/** The st. */
+		/** The StringTokenizer. */
 		StringTokenizer st;
 
 		/**
