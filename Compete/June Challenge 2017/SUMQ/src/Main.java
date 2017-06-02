@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 // TODO: Auto-generated Javadoc
@@ -40,15 +41,14 @@ public class Main {
 				c[i] = rdr.nextLong();
 			for (int i = 0; i < q; i++) {
 				long y = b[i];
-				for (int j = 0; j < p; j++) {
-					long x = a[j];
-					if (x <= y) {
-						for (int k = 0; k < r; k++) {
-							long z = c[k];
-							if (z <= y) {
-								total = (total + (((x + y) % MOD) * ((y + z) % MOD)) % MOD) % MOD;
-							}
-						}
+				long[] af = Arrays.stream(a).filter(val -> val <= y).toArray();
+				long[] cf = Arrays.stream(c).filter(val -> val <= y).toArray();
+				int pf = af.length, rf = cf.length;
+				for (int j = 0; j < pf; j++) {
+					long x = af[j];
+					for (int k = 0; k < rf; k++) {
+						long z = cf[k];
+						total = (total + (((x + y) % MOD) * ((y + z) % MOD)) % MOD) % MOD;
 					}
 				}
 			}
