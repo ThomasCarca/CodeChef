@@ -54,7 +54,7 @@ public class Main {
 				long y = b[i];
 				long xy = sumFiltered(a, y) % MOD;
 				long yz = sumFiltered(c, y) % MOD;
-				total = (total + (xy * yz) % MOD) % MOD;
+				total = (total + (xy * yz)) % MOD;
 			}
 			stdout.println(total);
 		}
