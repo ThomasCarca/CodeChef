@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 // TODO: Auto-generated Javadoc
@@ -16,23 +17,6 @@ public class Main {
 
 	/** The Constant modulo = 10^9+7. */
 	public static final long MOD = 1000000007;
-
-	/**
-	 * Sum filtered.
-	 *
-	 * @param full the complete array of value
-	 * @param y the value that any other value must not exceed
-	 * @return the sum between each (val+y) where val is in full and val <= y
-	 */
-	public static long sumFiltered(long[] full, long y) {
-		long total = 0;
-		for (int i = 0; i < full.length; i++) {
-			long val = full[i];
-			if (val <= y)
-				total += val + y;
-		}
-		return total;
-	}
 
 	/**
 	 * The main method.
@@ -47,19 +31,30 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int p = rdr.nextInt(), q = rdr.nextInt(), r = rdr.nextInt();
-			long[] a = new long[p], b = new long[q], c = new long[r];
+			int p = rdr.nextInt(), q = rdr.nextInt(), r = rdr.nextInt(), xi = 0, zi = 0;
+			long[] a = new long[p + 1], b = new long[q], c = new long[r + 1];
 			long total = 0;
-			for (int i = 0; i < p; i++)
-				a[i] = rdr.nextLong();
+			for (int i = 1; i <= p; i++)
+				a[i] = rdr.nextInt();
 			for (int i = 0; i < q; i++)
-				b[i] = rdr.nextLong();
-			for (int i = 0; i < r; i++)
-				c[i] = rdr.nextLong();
-			for (int i = 0; i < q; i++) {
-				long y = b[i];
-				long xy = sumFiltered(a, y) % MOD;
-				long yz = sumFiltered(c, y) % MOD;
+				b[i] = rdr.nextInt();
+			for (int i = 1; i <= r; i++)
+				c[i] = rdr.nextInt();
+			Arrays.sort(a);
+			Arrays.sort(b);
+			Arrays.sort(c);
+			for (int yi = 0; yi < q; yi++) {
+				long y = b[yi];
+				while (xi < p && a[xi + 1] <= y) {
+					a[xi + 1] += a[xi];
+					xi++;
+				}
+				while (zi < r && c[zi + 1] <= y) {
+					c[zi + 1] += c[zi];
+					zi++;
+				}
+				long xy = (a[xi] + xi * y) % MOD;
+				long yz = (c[zi] + zi * y) % MOD;
 				total = (total + (xy * yz)) % MOD;
 			}
 			stdout.println(total);
