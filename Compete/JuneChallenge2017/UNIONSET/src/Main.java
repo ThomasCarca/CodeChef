@@ -6,9 +6,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Arrays;
 import java.util.StringTokenizer;
+import java.util.stream.IntStream;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -29,33 +29,21 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = rdr.nextInt(), k = rdr.nextInt();
+			int n = rdr.nextInt(), k = rdr.nextInt(), count = 0;
 			int[][] numbers = new int[n][k];
-			Map<String, Boolean> pairs = new HashMap<String, Boolean>();
-			for (int set = 0; set < n - 1; set++) {
-				for (int nextSet = set + 1; nextSet < n; nextSet++)
-					pairs.put(Integer.toString(set) + "-" + Integer.toString(nextSet), true);
-			}
-			for (int set = 0; set < n; set++) {
+			for (int i = 0; i < n; i++) {
 				int len = rdr.nextInt();
-				while (len-- > 0) {
+				for (int j = 0; j < len; j++) {
 					int number = rdr.nextInt();
-					numbers[set][number - 1] = number;
+					numbers[i][number-1] = 1;
 				}
 			}
-			for (int set = 0; set < n - 1; set++) {
-				for (int inc = 0; inc < k; inc++) {
-					if (numbers[set][inc] == 0) {
-						for (int nextSet = set + 1; nextSet < n; nextSet++) {
-							String pair = Integer.toString(set) + "-" + Integer.toString(nextSet);
-							if (pairs.get(pair) && numbers[nextSet][inc] == 0) {
-								pairs.put(pair, false);
-							}
-						}
-					}
+			for (int i = 0; i < n-1; i++) {
+				for (int j = i+1; j < n; j++) {
+					int[] a = numbers[i], b = numbers[j];
+					count += (IntStream.range(0, k).map(index -> (a[index] | b[index])).allMatch(bit -> bit == 1)) ? 1 : 0;
 				}
 			}
-			long count = pairs.values().stream().filter(b -> b == true).count();
 			stdout.println(count);
 		}
 		stdout.flush();
