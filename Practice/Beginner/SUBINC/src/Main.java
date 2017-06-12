@@ -23,14 +23,25 @@ public class Main {
 	 *             Signals that an I/O exception has occurred.
 	 */
 	public static void main(String[] args) throws IOException {
-		FastReader r = new FastReader();
+		FastReader rdr = new FastReader();
 		PrintWriter stdout = new PrintWriter(System.out);
-		int T = r.nextInt();
+		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = r.nextInt();
-			
-			
-			
+			int n = rdr.nextInt(), index = 0, count = 0;
+			int[] arr = new int[n];
+			for (int i = 0; i < n; i++) {
+				arr[i] = rdr.nextInt();
+			}
+			while (index < n) {
+				int i = index, j = index;
+				while (j < n && arr[i] <= arr[j]) {
+					j++;
+					i = j - 1;
+				}
+				count += (j - index + 1) * (j - index) / 2;
+				index = j;
+			}
+			stdout.println(count);
 		}
 		stdout.flush();
 		stdout.close();

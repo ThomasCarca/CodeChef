@@ -14,6 +14,27 @@ import java.util.StringTokenizer;
  */
 public class Main {
 
+	/** The Constant MON. */
+	public static final String MON = "monday";
+	
+	/** The Constant TUE. */
+	public static final String TUE = "tuesday";
+	
+	/** The Constant WED. */
+	public static final String WED = "wednesday";
+	
+	/** The Constant THU. */
+	public static final String THU = "thursday";
+	
+	/** The Constant FRI. */
+	public static final String FRI = "friday";
+	
+	/** The Constant SAT. */
+	public static final String SAT = "saturday";
+	
+	/** The Constant SUN. */
+	public static final String SUN = "sunday";
+
 	/**
 	 * The main method.
 	 *
@@ -23,14 +44,38 @@ public class Main {
 	 *             Signals that an I/O exception has occurred.
 	 */
 	public static void main(String[] args) throws IOException {
-		FastReader r = new FastReader();
+		FastReader rdr = new FastReader();
 		PrintWriter stdout = new PrintWriter(System.out);
-		int T = r.nextInt();
+		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = r.nextInt();
-			
-			
-			
+			int year = rdr.nextInt();
+			int day = (int) (year * 365 + Math.floor((year - 1) / 4) - Math.floor((year - 1) / 100)
+					+ Math.floor((year - 1) / 400)) % 7;
+			switch (day) {
+			case 1:
+				stdout.println(MON);
+				break;
+			case 2:
+				stdout.println(TUE);
+				break;
+			case 3:
+				stdout.println(WED);
+				break;
+			case 4:
+				stdout.println(THU);
+				break;
+			case 5:
+				stdout.println(FRI);
+				break;
+			case 6:
+				stdout.println(SAT);
+				break;
+			case 0:
+				stdout.println(SUN);
+				break;
+
+			}
+
 		}
 		stdout.flush();
 		stdout.close();
