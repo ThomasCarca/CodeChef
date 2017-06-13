@@ -27,10 +27,11 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = rdr.nextInt(), index = 0, count = 0;
-			int[] arr = new int[n];
+			int n = rdr.nextInt(), index = 0;
+			long count = 0;
+			long[] arr = new long[n];
 			for (int i = 0; i < n; i++) {
-				arr[i] = rdr.nextInt();
+				arr[i] = rdr.nextLong();
 			}
 			while (index < n) {
 				int i = index, j = index;
@@ -38,7 +39,7 @@ public class Main {
 					j++;
 					i = j - 1;
 				}
-				count += (j - index + 1) * (j - index) / 2;
+				count += ((long) (j - index + 1) * (j - index)) / 2;
 				index = j;
 			}
 			stdout.println(count);
