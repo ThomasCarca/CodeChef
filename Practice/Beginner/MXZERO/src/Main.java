@@ -27,8 +27,17 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = rdr.nextInt();
-
+			int n = rdr.nextInt(), c = 0;
+			for (int i = 0; i < n; i++) {
+				if (rdr.nextInt() == 1) {
+					c++;
+				}
+			}
+			if (c%2 == 1) {
+				stdout.println(c);
+			} else {
+				stdout.println(n-c);
+			}
 		}
 		stdout.flush();
 		stdout.close();
