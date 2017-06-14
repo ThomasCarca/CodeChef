@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 // TODO: Auto-generated Javadoc
@@ -23,13 +24,37 @@ public class Main {
 	 *             Signals that an I/O exception has occurred.
 	 */
 	public static void main(String[] args) throws IOException {
-		FastReader r = new FastReader();
+		FastReader rdr = new FastReader();
 		PrintWriter stdout = new PrintWriter(System.out);
-		int T = r.nextInt();
+		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = r.nextInt();
-			
-			
+			int n = rdr.nextInt(), countCorrect = 0, inc = n;
+			char[] correctA = rdr.nextLine().toCharArray();
+			char[] chefA = rdr.nextLine().toCharArray();
+			int[][] prizes = new int[n+1][2];
+			for (int i = 0; i <= n; i++) {
+				prizes[i][0] = rdr.nextInt();
+				prizes[i][1] = i;
+			}
+			Arrays.sort(prizes, new java.util.Comparator<int[]>() {
+				public int compare(int[] a, int[] b) {
+					return Integer.compare(a[0], b[0]);
+				}
+			});
+			for (int i = 0; i < n; i++) {
+				if (correctA[i] == chefA[i])
+					countCorrect++;
+			}
+			if (countCorrect == n) {
+				while (n != prizes[inc][1]) {
+					inc--;
+				}
+			} else {
+				while (inc >= 0 && prizes[inc][1] > countCorrect) {
+					inc--;
+				}
+			}
+			stdout.println(prizes[inc][0]);
 			
 		}
 		stdout.flush();
