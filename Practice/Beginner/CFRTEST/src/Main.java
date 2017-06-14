@@ -6,6 +6,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.StringTokenizer;
 
 // TODO: Auto-generated Javadoc
@@ -23,14 +25,16 @@ public class Main {
 	 *             Signals that an I/O exception has occurred.
 	 */
 	public static void main(String[] args) throws IOException {
-		FastReader r = new FastReader();
+		FastReader rdr = new FastReader();
 		PrintWriter stdout = new PrintWriter(System.out);
-		int T = r.nextInt();
+		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = r.nextInt();
-			
-			
-			
+			int n = rdr.nextInt();
+			Set<Integer> friends = new HashSet<Integer>();
+			for (int i = 0; i < n; i++) {
+				friends.add(rdr.nextInt());
+			}
+			stdout.println(friends.size());		
 		}
 		stdout.flush();
 		stdout.close();
