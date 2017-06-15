@@ -27,8 +27,14 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = rdr.nextInt();
-
+			long n = rdr.nextLong(), b = rdr.nextLong(), m = rdr.nextLong(), rest = n, total = 0;
+			while (rest >= 1) {
+				total += ((rest+1)/2)* m + b; 
+				rest = rest/2;
+				m *= 2;
+			}
+			total -= b;
+			stdout.println(total);
 		}
 		stdout.flush();
 		stdout.close();
