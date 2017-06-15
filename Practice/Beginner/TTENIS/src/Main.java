@@ -27,8 +27,8 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = rdr.nextInt();
-
+			String stats = rdr.nextLine();
+			stdout.println(stats.charAt(stats.length()-1) == '1' ? "WIN" : "LOSE");
 		}
 		stdout.flush();
 		stdout.close();
