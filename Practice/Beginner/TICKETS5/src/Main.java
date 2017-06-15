@@ -27,8 +27,26 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = rdr.nextInt();
-
+			char[] ticket = rdr.nextLine().toCharArray();
+			char even = ticket[0], odd = ticket[1];
+			boolean succesful = even != odd;
+			if (succesful) {
+				for (int i = 2; i < ticket.length; i += 2) {
+					if (ticket[i] != even) {
+						succesful = false;
+						break;
+					}
+				}				
+			}
+			if (succesful) {
+				for (int i = 3; i < ticket.length; i += 2) {
+					if (ticket[i] != odd) {
+						succesful = false;
+						break;
+					}
+				}
+			}
+			stdout.println(succesful ? "YES" : "NO");
 		}
 		stdout.flush();
 		stdout.close();
