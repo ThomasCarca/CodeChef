@@ -27,8 +27,11 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = rdr.nextInt();
-
+			int n = rdr.nextInt(), k = rdr.nextInt(), r = 0;
+			for (int i = 0; i < n; i++) {
+				r = (r + rdr.nextInt()) % 2;
+			}
+			stdout.println(k == 1 && r == 0 ? "odd" : "even");
 		}
 		stdout.flush();
 		stdout.close();
