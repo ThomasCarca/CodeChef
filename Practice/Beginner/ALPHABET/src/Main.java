@@ -6,6 +6,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.StringTokenizer;
 
 // TODO: Auto-generated Javadoc
@@ -25,9 +27,21 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		FastReader rdr = new FastReader();
 		PrintWriter stdout = new PrintWriter(System.out);
-		int T = rdr.nextInt();
-		while (T-- > 0) {
-			int n = rdr.nextInt();
+		String alphabet = rdr.nextLine();
+		int n = rdr.nextInt();
+		while (n-- > 0) {
+			char[] word = rdr.nextLine().toCharArray();
+			Set<Character> letterSet = new HashSet<Character>();
+			for (int i = 0; i < word.length; i++) {
+				letterSet.add(word[i]);
+			}
+			boolean canRead = true;
+			for (Character letter : letterSet) {
+				canRead = alphabet.contains(letter + "");
+				if (!canRead)
+					break;
+			}
+			stdout.println(canRead ? "Yes" : "No");
 
 		}
 		stdout.flush();
