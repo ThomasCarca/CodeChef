@@ -27,8 +27,8 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = rdr.nextInt();
-
+			int n = rdr.nextInt(), m = rdr.nextInt();
+			stdout.println((n*m)%2 == 0 ? "Yes" : "No");
 		}
 		stdout.flush();
 		stdout.close();
