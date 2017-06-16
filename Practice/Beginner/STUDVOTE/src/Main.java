@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 // TODO: Auto-generated Javadoc
@@ -27,8 +28,19 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = rdr.nextInt();
-
+			int n = rdr.nextInt(), k = rdr.nextInt();
+			int[] votes = new int[n];
+			for (int i = 0; i < n; i++) {
+				int vote = rdr.nextInt();
+				if (votes[vote - 1] != -1) {
+					if (vote - 1 == i) {
+						votes[vote - 1] = -1;
+					} else {
+						votes[vote - 1]++;
+					}
+				}
+			}
+			stdout.println(Arrays.stream(votes).filter(v -> v >= k).count());
 		}
 		stdout.flush();
 		stdout.close();
