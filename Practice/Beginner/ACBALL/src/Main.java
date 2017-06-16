@@ -14,6 +14,10 @@ import java.util.StringTokenizer;
  */
 public class Main {
 
+	public static char opposite(char c) {
+		return c == 'B' ? 'W' : 'B';
+	}
+
 	/**
 	 * The main method.
 	 *
@@ -27,8 +31,18 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = rdr.nextInt();
-
+			String x = rdr.nextLine();
+			String y = rdr.nextLine();
+			int inc = 0, len = x.length();
+			while (inc < len) {
+				if (x.charAt(inc) == y.charAt(inc)) {
+					stdout.print(opposite(x.charAt(inc)));
+				} else {
+					stdout.print('B');
+				}
+				inc++;
+			}
+			stdout.println();
 		}
 		stdout.flush();
 		stdout.close();
