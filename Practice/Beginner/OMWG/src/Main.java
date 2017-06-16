@@ -27,8 +27,8 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = rdr.nextInt();
-
+			int n = rdr.nextInt(), m = rdr.nextInt();
+			stdout.println(2 * (n - 1) * m + (m - n));
 		}
 		stdout.flush();
 		stdout.close();
@@ -42,6 +42,10 @@ public class Main {
 
 	/**
 	 * The Class FastReader.
+	 */
+	/**
+	 * @author tboulbes
+	 *
 	 */
 	static class FastReader {
 
