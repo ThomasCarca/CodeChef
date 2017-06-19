@@ -25,10 +25,17 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		FastReader rdr = new FastReader();
 		PrintWriter stdout = new PrintWriter(System.out);
-		int T = rdr.nextInt();
-		while (T-- > 0) {
-			int n = rdr.nextInt();
-
+		int n = rdr.nextInt(), q = rdr.nextInt(), min = Integer.MAX_VALUE, max = Integer.MIN_VALUE;
+		for (int i = 0; i < n; i++) {
+			int value = rdr.nextInt();
+			if (value < min)
+				min = value;
+			if (value > max)
+				max = value;
+		}
+		for (int i = 0; i < q; i++) {
+			int value = rdr.nextInt();
+			stdout.println(value >= min && value <= max ? "Yes" : "No");
 		}
 		stdout.flush();
 		stdout.close();
