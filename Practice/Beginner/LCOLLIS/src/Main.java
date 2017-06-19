@@ -14,6 +14,41 @@ import java.util.StringTokenizer;
  */
 public class Main {
 
+	static class Collision {
+
+		private int[] row;
+		private int count = 0;
+
+		public Collision() {
+		}
+
+		public Collision(int size) {
+			this.row = new int[size];
+		}
+
+		public void increment(int index) {
+			this.row[index]++;
+		}
+
+		public void add(char[] r) {
+			for (int i = 0; i < r.length; i++) {
+				if (r[i] == '1') {
+					increment(i);
+				}
+			}
+		}
+
+		public int getCount() {
+			for (int i = 0; i < row.length; i++) {
+				if (this.row[i] > 1) {
+					this.count += (this.row[i] * (this.row[i] - 1)) / 2;
+				}
+			}
+			return this.count;
+		}
+
+	}
+
 	/**
 	 * The main method.
 	 *
@@ -28,6 +63,11 @@ public class Main {
 		int T = rdr.nextInt();
 		while (T-- > 0) {
 			int n = rdr.nextInt(), m = rdr.nextInt();
+			Collision c = new Collision(m);
+			for (int i = 0; i < n; i++) {
+				c.add(rdr.nextLine().toCharArray());
+			}
+			stdout.println(c.getCount());
 		}
 		stdout.flush();
 		stdout.close();
