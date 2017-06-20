@@ -14,6 +14,17 @@ import java.util.StringTokenizer;
  */
 public class Main {
 
+	public static int count(int[] arr, int index) {
+		boolean keepCounting = true;
+		int count = 0;
+		while (keepCounting) {
+			count++;
+			keepCounting = index < arr.length - 1 && arr[index] * arr[index + 1] == -1;
+			index++;
+		}
+		return count;
+	}
+
 	/**
 	 * The main method.
 	 *
@@ -27,7 +38,27 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = rdr.nextInt(), m = rdr.nextInt();
+			int n = rdr.nextInt();
+			int[] arr = new int[n], count = new int[n];
+			boolean keepCounting = true;
+			arr[0] = rdr.nextInt() >= 0 ? 1 : -1;
+			count[0] = 1;
+			for (int i = 1; i < n; i++) {
+				arr[i] = rdr.nextInt() >= 0 ? 1 : -1;
+				if (keepCounting) {
+					keepCounting = arr[i] * arr[i - 1] == -1;
+					count[0] += keepCounting ? 1 : 0;
+				}
+			}
+			for (int i = 1; i < n; i++) {
+				if (count[i - 1] == 1) {
+					count[i] = count(arr, i);
+				} else {
+					count[i] = count[i - 1] - 1;
+				}
+				stdout.print(count[i-1] + " ");
+			}
+			stdout.println(count[n-1]);
 		}
 		stdout.flush();
 		stdout.close();
