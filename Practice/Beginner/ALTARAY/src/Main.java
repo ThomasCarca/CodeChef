@@ -56,9 +56,9 @@ public class Main {
 				} else {
 					count[i] = count[i - 1] - 1;
 				}
-				stdout.print(count[i-1] + " ");
+				stdout.print(count[i - 1] + " ");
 			}
-			stdout.println(count[n-1]);
+			stdout.println(count[n - 1]);
 		}
 		stdout.flush();
 		stdout.close();
