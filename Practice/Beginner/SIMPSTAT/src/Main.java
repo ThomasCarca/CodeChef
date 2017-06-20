@@ -6,6 +6,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.StringTokenizer;
 
 // TODO: Auto-generated Javadoc
@@ -13,6 +15,24 @@ import java.util.StringTokenizer;
  * The Class Main.
  */
 public class Main {
+
+	private static void addValue(LinkedList<Double> ll, double val) {
+
+		if (ll.size() == 0) {
+			ll.add(val);
+		} else if (ll.get(0) > val) {
+			ll.add(0, val);
+		} else if (ll.get(ll.size() - 1) < val) {
+			ll.add(ll.size(), val);
+		} else {
+			int i = 0;
+			while (ll.get(i) < val) {
+				i++;
+			}
+			ll.add(i, val);
+		}
+
+	}
 
 	/**
 	 * The main method.
@@ -23,14 +43,22 @@ public class Main {
 	 *             Signals that an I/O exception has occurred.
 	 */
 	public static void main(String[] args) throws IOException {
-		FastReader r = new FastReader();
+		FastReader rdr = new FastReader();
 		PrintWriter stdout = new PrintWriter(System.out);
-		int T = r.nextInt();
+		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = r.nextInt();
-			
-			
-			
+			int n = rdr.nextInt(), k = rdr.nextInt(), upperBound = n - k;
+			double average = 0;
+			double[] values = new double[n];
+			for (int i = 0; i < n; i++) {
+				values[i] = rdr.nextDouble();
+			}
+			Arrays.sort(values);
+			for (int i = k; i < upperBound; i++) {
+				average += values[i];
+			}
+			average /= (n - (2 * k));
+			stdout.println(String.format("%.6f", average));
 		}
 		stdout.flush();
 		stdout.close();
