@@ -27,7 +27,22 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = rdr.nextInt(), m = rdr.nextInt();
+			int n = rdr.nextInt();
+			int score = 0;
+			boolean has2 = false, has5 = false;
+			for (int i = 0; i < n; i++) {
+				int mark = rdr.nextInt();
+				has2 = has2 || mark == 2;
+				if (!has2) {
+					score += mark;
+					has5 = has5 || mark == 5;
+				}
+			}
+			if (has2) {
+				stdout.println("No");
+			} else {
+				stdout.println(has5 && score >= 4 * n ? "Yes" : "No");
+			}
 		}
 		stdout.flush();
 		stdout.close();
