@@ -27,7 +27,31 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = rdr.nextInt(), m = rdr.nextInt();
+			String[] info = rdr.nextLine().split("\\s+");
+			int activities = Integer.parseInt(info[0]), nationality = info[1].equals("INDIAN") ? 200 : 400;
+			int total = 0;
+			for (int i = 0; i < activities; i++) {
+				String[] activity = rdr.nextLine().split("\\s+");
+				String name = activity[0];
+				switch (name) {
+				case "CONTEST_WON":
+					int rank = Integer.parseInt(activity[1]);
+					total += 300 + (rank > 20 ? 0 : 20 - rank);
+					break;
+				case "TOP_CONTRIBUTOR":
+					total += 300;
+					break;
+				case "BUG_FOUND":
+					int severity = Integer.parseInt(activity[1]);
+					total += severity;
+					break;
+				case "CONTEST_HOSTED":
+					total += 50;
+					break;
+				}
+			}
+			int months = total / nationality;
+			System.out.println(months);
 		}
 		stdout.flush();
 		stdout.close();
