@@ -27,7 +27,8 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = rdr.nextInt(), m = rdr.nextInt();
+			String line = rdr.nextLine();
+			stdout.println((line.length()-line.replaceAll("<>", "").length())/2);
 		}
 		stdout.flush();
 		stdout.close();
