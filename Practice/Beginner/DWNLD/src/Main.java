@@ -27,7 +27,19 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = rdr.nextInt(), m = rdr.nextInt();
+			int n = rdr.nextInt(), k = rdr.nextInt(), total = 0;
+			for (int i = 0; i < n; i++) {
+				int time = rdr.nextInt();
+				int speed = rdr.nextInt();
+				if (k - time >= 0) {
+					k -= time;
+				} else {
+					time -= k;
+					k = 0;
+					total += time * speed;
+				}
+			}
+			stdout.println(total);
 		}
 		stdout.flush();
 		stdout.close();
