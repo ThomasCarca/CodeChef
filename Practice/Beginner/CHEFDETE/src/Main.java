@@ -25,9 +25,18 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		FastReader rdr = new FastReader();
 		PrintWriter stdout = new PrintWriter(System.out);
-		int T = rdr.nextInt();
-		while (T-- > 0) {
-			int n = rdr.nextInt(), m = rdr.nextInt();
+		int n = rdr.nextInt();
+		int[] reports = new int[n];
+		for (int i = 0; i < n; i++) {
+			int report = rdr.nextInt();
+			if (report != 0) {
+				reports[report-1]++;				
+			}
+		}
+		for (int i = 0; i < n; i++) {
+			if (reports[i] == 0) {
+				stdout.println(i+1);
+			}
 		}
 		stdout.flush();
 		stdout.close();
