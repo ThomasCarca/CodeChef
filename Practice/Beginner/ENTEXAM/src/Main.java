@@ -6,6 +6,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.StringTokenizer;
 
 // TODO: Auto-generated Javadoc
@@ -27,7 +29,22 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = rdr.nextInt(), m = rdr.nextInt();
+			int n = rdr.nextInt(), k = rdr.nextInt(), e = rdr.nextInt(), m = rdr.nextInt();
+			Long[] scores = new Long[n - 1];
+			long sergeyScore = 0;
+			for (int i = 0; i < n - 1; i++) {
+				scores[i] = 0L;
+				for (int j = 0; j < e; j++) {
+					scores[i] += rdr.nextLong();
+				}
+			}
+			for (int i = 0; i < e - 1; i++) {
+				sergeyScore += rdr.nextLong();
+			}
+			Arrays.sort(scores, Collections.reverseOrder());
+			long scoreForEnrollment = scores[k-1]+1;
+			long scoreToGet = scoreForEnrollment - sergeyScore;
+			stdout.println(scoreToGet > m ? "Impossible" : Math.max(0, scoreToGet));
 		}
 		stdout.flush();
 		stdout.close();
