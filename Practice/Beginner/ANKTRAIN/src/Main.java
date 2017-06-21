@@ -27,7 +27,24 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = rdr.nextInt(), m = rdr.nextInt();
+			int berth = rdr.nextInt();
+			if (berth % 8 == 0) {
+				stdout.println(berth - 1 + "SL");
+			} else if (berth % 8 == 1) {
+				stdout.println(berth + 3 + "LB");
+			} else if (berth % 8 == 2) {
+				stdout.println(berth + 3 + "MB");
+			} else if (berth % 8 == 3) {
+				stdout.println(berth + 3 + "UB");
+			} else if (berth % 8 == 4) {
+				stdout.println(berth - 3 + "LB");
+			} else if (berth % 8 == 5) {
+				stdout.println(berth - 3 + "MB");
+			} else if (berth % 8 == 6) {
+				stdout.println(berth - 3 + "UB");
+			} else if (berth % 8 == 7) {
+				stdout.println(berth + 1 + "SU");
+			}
 		}
 		stdout.flush();
 		stdout.close();
