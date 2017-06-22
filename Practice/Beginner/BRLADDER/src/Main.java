@@ -27,7 +27,13 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = rdr.nextInt(), m = rdr.nextInt();
+			int a = rdr.nextInt(), b = rdr.nextInt();
+			if ((a % 2 == 1 && (b == a - 2 || b == a + 1 || b == a + 2))
+					|| (a % 2 == 0 && (b == a - 2 || b == a - 1 || b == a + 2))) {
+				stdout.println("YES");
+			} else {
+				stdout.println("NO");
+			}
 		}
 		stdout.flush();
 		stdout.close();
