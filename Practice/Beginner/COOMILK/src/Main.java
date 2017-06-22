@@ -27,7 +27,20 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = rdr.nextInt(), m = rdr.nextInt();
+			int n = rdr.nextInt();
+			String[] food = rdr.nextLine().split("\\s+");
+			boolean followInstructions = true; 
+			if (food[n-1].equals("cookie")) {
+				followInstructions = false;
+			} else {
+				for (int i = 0; i < n-1; i++) {
+					if (food[i].equals("cookie") && food[i+1].equals("cookie")) {
+						followInstructions = false;
+						break;
+					}
+				}
+			}
+			stdout.println(followInstructions ? "YES" : "NO");
 		}
 		stdout.flush();
 		stdout.close();
