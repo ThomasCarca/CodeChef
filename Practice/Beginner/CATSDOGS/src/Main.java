@@ -27,7 +27,10 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = rdr.nextInt(), m = rdr.nextInt();
+			long c = rdr.nextLong(), d = rdr.nextLong(), l = rdr.nextLong();
+			long max = (c + d)*4;
+			long min = (Math.max(0, c-2*d) + d)*4;
+			stdout.println(l % 4 == 0 && min <= l && l <= max ? "yes" : "no");
 		}
 		stdout.flush();
 		stdout.close();
