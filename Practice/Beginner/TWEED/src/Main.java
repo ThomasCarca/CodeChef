@@ -27,7 +27,10 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = rdr.nextInt(), m = rdr.nextInt();
+			String[] info = rdr.nextLine().split("\\s+");
+			String[] values = rdr.nextLine().split("\\s+");
+			stdout.println((info[0].equals("1") && info[1].equals("Dee") && Integer.parseInt(values[0]) % 2 == 0)
+					? "Dee" : "Dum");
 		}
 		stdout.flush();
 		stdout.close();
