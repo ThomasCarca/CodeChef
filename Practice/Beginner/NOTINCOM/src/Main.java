@@ -6,6 +6,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.StringTokenizer;
 
 // TODO: Auto-generated Javadoc
@@ -27,7 +29,18 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = rdr.nextInt(), m = rdr.nextInt();
+			int n = rdr.nextInt(), m = rdr.nextInt(), count = 0;
+			List<Integer> alice = new ArrayList<Integer>();
+			for (int i = 0; i < n; i++) {
+				alice.add(rdr.nextInt());
+			}
+			for (int i = 0; i < m; i++) {
+				Integer value = rdr.nextInt();
+				if (alice.contains(value)) {
+					count++;
+				}
+			}
+			stdout.println(count);
 		}
 		stdout.flush();
 		stdout.close();
