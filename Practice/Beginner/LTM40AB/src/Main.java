@@ -27,7 +27,23 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = rdr.nextInt(), m = rdr.nextInt();
+			long a = rdr.nextInt(), b = rdr.nextInt(), c = rdr.nextInt(), d = rdr.nextInt();
+			long result = 0;
+			if (d > a) {
+				if (c < a) {
+					c = a;
+				}
+				if (c <= b) {
+					result += (d - c + 1) * (c - a);
+					result += (d - c + 1) * (d - c) / 2;
+					if (d > b + 1) {
+						result -= (d - b - 1) * (d - b) / 2;
+					}
+				} else {
+					result += (d - c + 1) * (b - a + 1);
+				}
+			}
+			stdout.println(result);
 		}
 		stdout.flush();
 		stdout.close();
