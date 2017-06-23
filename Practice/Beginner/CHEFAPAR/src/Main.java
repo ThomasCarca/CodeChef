@@ -27,7 +27,19 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = rdr.nextInt(), m = rdr.nextInt();
+			int n = rdr.nextInt(), total = 0, inc = 0;
+			int[] values = new int[n];
+			for (int i = 0; i < n; i++) {
+				values[i] = rdr.nextInt();
+				if (values[i] == 0) {
+					total += 1000;	
+				}
+			}
+			while (inc < n && values[inc] == 1) {
+				inc++;
+			}
+			total += (n-inc)*100;
+			stdout.println(total);
 		}
 		stdout.flush();
 		stdout.close();
