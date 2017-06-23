@@ -27,7 +27,22 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = rdr.nextInt(), m = rdr.nextInt();
+			int n = rdr.nextInt(), xeven = 0, xodd = 0, yeven = 0, yodd = 0;
+			for (int i = 0; i < n; i++) {
+				if (i % 2 == 0) {
+					xeven += rdr.nextInt();
+				} else {
+					xodd += rdr.nextInt();
+				}
+			}
+			for (int i = 0; i < n; i++) {
+				if (i % 2 == 0) {
+					yeven += rdr.nextInt();
+				} else {
+					yodd += rdr.nextInt();
+				}
+			}
+			stdout.println(Math.min(xeven + yodd, xodd + yeven));
 		}
 		stdout.flush();
 		stdout.close();
