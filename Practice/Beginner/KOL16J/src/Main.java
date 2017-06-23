@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 // TODO: Auto-generated Javadoc
@@ -27,7 +28,28 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = rdr.nextInt(), m = rdr.nextInt();
+			int chapters = rdr.nextInt();
+			int[] movie = new int[chapters];
+			boolean nonLinear = false, missChapter = false;
+			boolean[] chapterPresent = new boolean[500];
+			Arrays.fill(chapterPresent, false);
+			for (int i = 0; i < chapters; i++)
+				movie[i] = rdr.nextInt();
+			for (int i = 1; i <= chapters; i++) {
+				chapterPresent[movie[i - 1] - 1] = true;
+				if (movie[i - 1] != i) {
+					nonLinear = true;
+				}
+			}
+			for (int i = 0; i < chapters; i++) {
+				if (!chapterPresent[i])
+					missChapter = true;
+			}
+			if (nonLinear && !missChapter) {
+				stdout.println("yes");
+			} else {
+				stdout.println("no");
+			}
 		}
 		stdout.flush();
 		stdout.close();
