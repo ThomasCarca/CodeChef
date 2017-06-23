@@ -6,8 +6,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.StringTokenizer;
 
 // TODO: Auto-generated Javadoc
@@ -30,17 +30,20 @@ public class Main {
 		int T = rdr.nextInt();
 		while (T-- > 0) {
 			int n = rdr.nextInt(), m = rdr.nextInt(), count = 0;
-			List<Integer> alice = new ArrayList<Integer>();
+			Set<Integer> alice = new HashSet<Integer>();
+			Set<Integer> bertha = new HashSet<Integer>();
+			Set<Integer> combined = new HashSet<Integer>();
 			for (int i = 0; i < n; i++) {
-				alice.add(rdr.nextInt());
+				int value = rdr.nextInt();
+				alice.add(value);
+				combined.add(value);
 			}
 			for (int i = 0; i < m; i++) {
 				Integer value = rdr.nextInt();
-				if (alice.contains(value)) {
-					count++;
-				}
+				bertha.add(value);
+				combined.add(value);
 			}
-			stdout.println(count);
+			stdout.println(bertha.size() + alice.size() - combined.size());
 		}
 		stdout.flush();
 		stdout.close();
