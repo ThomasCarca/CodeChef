@@ -27,7 +27,18 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = rdr.nextInt(), m = rdr.nextInt();
+			int n = rdr.nextInt(), m = rdr.nextInt(), c = rdr.nextInt(), div = 1;
+			long count = 0;
+			while (div <= n) {
+				if (c % div == 0) {
+					int quotient = c / div;
+					if (quotient <= m) {
+						count++;
+					}
+				}
+				div++;
+			}
+			stdout.println(count);
 		}
 		stdout.flush();
 		stdout.close();
