@@ -27,7 +27,20 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = rdr.nextInt(), m = rdr.nextInt();
+			double s = rdr.nextDouble(), sg = rdr.nextDouble(), fg = rdr.nextDouble(), d = rdr.nextDouble(),
+					t = rdr.nextDouble();
+			double cs = s + (d * 50 * 3.6 / t);
+			double error_s = Math.abs(sg - cs);
+			double error_f = Math.abs(fg - cs);
+			if (error_s == error_f) {
+				stdout.println("DRAW");
+			} else {
+				if (error_s < error_f) {
+					stdout.println("SEBI");
+				} else {
+					stdout.println("FATHER");
+				}
+			}
 		}
 		stdout.flush();
 		stdout.close();
