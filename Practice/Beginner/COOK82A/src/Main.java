@@ -6,6 +6,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.StringTokenizer;
 
 // TODO: Auto-generated Javadoc
@@ -27,8 +29,14 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = rdr.nextInt(), m = rdr.nextInt();
-			
+			Map<String, Integer> scores = new HashMap<String, Integer>();
+			for (int i = 0; i < 4; i++) {
+				String[] data = rdr.nextLine().split("\\s+");
+				scores.put(data[0], Integer.parseInt(data[1]));
+			}
+			stdout.println(
+					scores.get("RealMadrid") < scores.get("Malaga") && scores.get("Barcelona") > scores.get("Eibar")
+							? "Barcelona" : "RealMadrid");
 		}
 		stdout.flush();
 		stdout.close();
