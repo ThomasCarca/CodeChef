@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.math.BigInteger;
 import java.util.StringTokenizer;
 
 // TODO: Auto-generated Javadoc
@@ -13,6 +14,36 @@ import java.util.StringTokenizer;
  * The Class Main.
  */
 public class Main {
+
+	/**
+	 * Gcd.
+	 *
+	 * @param a
+	 *            the a
+	 * @param b
+	 *            the b
+	 * @return the int
+	 */
+	public static long gcd(long a, long b) {
+		if (b == 0) {
+			return a;
+		} else {
+			return gcd(b, a % b);
+		}
+	}
+
+	/**
+	 * Lcm.
+	 *
+	 * @param a
+	 *            the a
+	 * @param b
+	 *            the b
+	 * @return the int
+	 */
+	public static BigInteger lcm(long a, long b) {
+		return (BigInteger.valueOf(a).multiply(BigInteger.valueOf(b)).divide(BigInteger.valueOf(gcd(a, b))));
+	}
 
 	/**
 	 * The main method.
@@ -27,8 +58,21 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = rdr.nextInt(), m = rdr.nextInt();
-			
+			int n = rdr.nextInt();
+			long[] values = new long[n];
+			BigInteger lcm, minlcm = new BigInteger("1000000000000000000");
+			for (int i = 0; i < n; i++) {
+				values[i] = rdr.nextLong();
+			}
+			for (int i = 0; i < n - 1; i++) {
+				for (int j = i + 1; j < n; j++) {
+					lcm = lcm(values[i], values[j]);
+					if (lcm.compareTo(minlcm) == -1) {
+						minlcm = lcm;
+					}
+				}
+			}
+			stdout.println(minlcm);
 		}
 		stdout.flush();
 		stdout.close();
