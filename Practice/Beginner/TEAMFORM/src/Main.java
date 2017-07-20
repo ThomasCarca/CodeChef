@@ -28,7 +28,10 @@ public class Main {
 		int T = rdr.nextInt();
 		while (T-- > 0) {
 			int n = rdr.nextInt(), m = rdr.nextInt();
-			
+			stdout.println((n-2*m)%2 == 0 ? "yes" : "no");
+			while (m-- > 0) {
+				rdr.nextLine();
+			}
 		}
 		stdout.flush();
 		stdout.close();
