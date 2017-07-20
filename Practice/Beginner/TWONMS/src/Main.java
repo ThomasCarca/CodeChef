@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.math.BigInteger;
 import java.util.StringTokenizer;
 
 // TODO: Auto-generated Javadoc
@@ -27,8 +28,12 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = rdr.nextInt(), m = rdr.nextInt();
-			
+			int a = rdr.nextInt(), b = rdr.nextInt(), n = rdr.nextInt();
+			int aTurns = (n + 1) / 2;
+			int bTurns = n - aTurns;
+			BigInteger c = BigInteger.valueOf(a).multiply(BigInteger.valueOf(2).pow(aTurns));
+			BigInteger d = BigInteger.valueOf(b).multiply(BigInteger.valueOf(2).pow(bTurns));
+			stdout.println(c.max(d).divide(c.min(d)));
 		}
 		stdout.flush();
 		stdout.close();
