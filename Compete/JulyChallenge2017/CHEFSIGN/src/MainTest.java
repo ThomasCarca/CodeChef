@@ -54,6 +54,10 @@ public class MainTest {
 		assertEquals(16, Main.solve("<<<<<<<<<<>><<<<>><<<<>>>>>>>>>>>>>>>"));
 		assertEquals(16, Main.solve("<<<<<<<<<<=>><<<<=>><<<<=>>>>>>>>>>>>>>>"));
 		assertEquals(16, Main.solve("<<<<=<<<<<<=>><<<<=>><<<<=>>>>>>>>>>>=>>>>"));
+		assertEquals(2, Main.solve("<==><==>"));
+		assertEquals(2, Main.solve("<==>==<==>"));
+		assertEquals(3, Main.solve("<==<==>==>"));
+		
 	}
 
 }

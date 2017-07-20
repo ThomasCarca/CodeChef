@@ -48,7 +48,7 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = rdr.nextInt();
 		while (T-- > 0) {
-			String signs = rdr.nextLine();
+			String signs = rdr.nextLine().replace("\\s+", "");
 			stdout.println(solve(signs));
 		}
 		stdout.flush();
