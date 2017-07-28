@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.StringTokenizer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -26,9 +28,16 @@ public class Main {
 		FastReader rdr = new FastReader();
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = rdr.nextInt();
+		Pattern pattern = Pattern.compile("^C*E*S*$");
+		Matcher matcher;
 		while (T-- > 0) {
-			int n = rdr.nextInt(), m = rdr.nextInt();
-			
+			String day = rdr.nextLine();
+			matcher = pattern.matcher(day);
+
+			if (matcher.find())
+				System.out.println("yes");
+			else
+				System.out.println("no");
 		}
 		stdout.flush();
 		stdout.close();
