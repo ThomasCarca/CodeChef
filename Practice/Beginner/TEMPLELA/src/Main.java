@@ -13,6 +13,23 @@ import java.util.StringTokenizer;
  * The Class Main.
  */
 public class Main {
+	
+	public static String solve(String[] snake) {
+		int n = snake.length;
+		if (n % 2 == 1) {
+			int middle = n / 2, i = 0;
+			while (i < middle && Integer.parseInt(snake[i]) == i + 1 && Integer.parseInt(snake[n - 1 - i]) == i + 1) {
+				i++;
+			}
+			if (i == middle && Integer.parseInt(snake[middle]) == i + 1) {
+				return "yes";
+			} else {
+				return "no";
+			}
+		} else {
+			return "no";
+		}
+	}
 
 	/**
 	 * The main method.
@@ -27,8 +44,8 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = rdr.nextInt(), m = rdr.nextInt();
-			
+			rdr.nextInt();
+			stdout.println(solve(rdr.nextLine().split("\\s+")));
 		}
 		stdout.flush();
 		stdout.close();
