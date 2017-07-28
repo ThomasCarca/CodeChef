@@ -27,8 +27,17 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = rdr.nextInt(), m = rdr.nextInt();
-			
+			char[] crayons = rdr.nextLine().toCharArray();
+			char prev = crayons[0];
+			int edges = 0;
+			for (int i = 0; i < crayons.length; i++) {
+				char current = crayons[i];
+				if (prev != current) {
+					edges++;
+				}
+				prev = current;
+			}
+			stdout.println((edges + 1) / 2);
 		}
 		stdout.flush();
 		stdout.close();
