@@ -27,8 +27,21 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = rdr.nextInt(), m = rdr.nextInt();
-			
+			char[] line = rdr.nextLine().toCharArray();
+			boolean correct = true, start = false, end = false;
+			int i = 0;
+			while (correct && i < line.length) {
+				char current = line[i];
+				if (current == '1') {
+					start = true;
+					correct = end == false;
+				} else {
+					end = start == true;
+				}
+				i++;
+			}
+			correct = correct && start;
+			stdout.println(correct ? "YES" : "NO");
 		}
 		stdout.flush();
 		stdout.close();
