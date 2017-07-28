@@ -27,8 +27,9 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = rdr.nextInt(), m = rdr.nextInt();
-			
+			rdr.nextInt();
+			String snakes = rdr.nextLine().replaceAll("\\.+", "").replaceAll("HT", "");
+			stdout.println(snakes.length() == 0 ? "Valid" : "Invalid");
 		}
 		stdout.flush();
 		stdout.close();
