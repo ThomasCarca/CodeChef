@@ -14,6 +14,12 @@ import java.util.StringTokenizer;
  */
 public class Main {
 
+	/**
+	 * Solve.
+	 *
+	 * @param line the line
+	 * @return the string
+	 */
 	public static String solve(String line) {
 		char[] arr = line.toCharArray();
 		int len = arr.length, count = 0;
