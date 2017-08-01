@@ -14,6 +14,26 @@ import java.util.StringTokenizer;
  */
 public class Main {
 
+	public static String solve(String line) {
+		char[] arr = line.toCharArray();
+		int len = arr.length, count = 0;
+		for (int i = 0; i < len; i++) {
+			if (arr[i] == 'm') {
+				if (i - 1 >= 0 && arr[i - 1] == 's') {
+					arr[i - 1] = '*';
+					count--;
+				} else if (i + 1 < len && arr[i + 1] == 's') {
+					arr[i + 1] = '*';
+					count--;
+				}
+				count--;
+			} else {
+				count++;
+			}
+		}
+		return count <= 0 ? (count == 0 ? "tie" : "mongooses") : "snakes";
+	}
+
 	/**
 	 * The main method.
 	 *
@@ -27,8 +47,8 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = rdr.nextInt(), m = rdr.nextInt();
-			
+			String line = rdr.nextLine();
+			stdout.println(solve(line));
 		}
 		stdout.flush();
 		stdout.close();
