@@ -14,6 +14,10 @@ import java.util.StringTokenizer;
  */
 public class Main {
 
+	static int solve(int n, int k, String line) {
+		return 0;
+	}
+
 	/**
 	 * The main method.
 	 *
@@ -27,8 +31,9 @@ public class Main {
 		PrintWriter stdout = new PrintWriter(System.out);
 		int T = rdr.nextInt();
 		while (T-- > 0) {
-			int n = rdr.nextInt(), m = rdr.nextInt();
-			
+			int n = rdr.nextInt(), k = rdr.nextInt();
+			String line = rdr.nextLine();
+			stdout.println(solve(n, k, line));
 		}
 		stdout.flush();
 		stdout.close();
