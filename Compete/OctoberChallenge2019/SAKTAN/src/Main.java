@@ -13,8 +13,14 @@ import java.util.StringTokenizer;
 
 public class Main {
 
-    public static int countOddNumbers(int[][] matrix) {
-        return 0;
+    static long countOddNumbers(int[][] matrix) {
+        long oddNumbers = 0L;
+        for (int[] row : matrix) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                oddNumbers += row[j] % 2 == 1 ? 1 : 0;
+            }
+        }
+        return oddNumbers;
     }
 
     public static void main(String[] args) {
@@ -36,26 +42,12 @@ public class Main {
 
     }
 
-    public static void performOperationOnMatrix(int[][] matrix, int X, int Y) {
-        if (matrix.length > 1) {
-            if (X == 1) {
-                matrix[0][0] += 1;
-                matrix[0][1] += 1;
-            }
-            if (X == 2) {
-                matrix[1][1] += 1;
-                matrix[1][0] += 1;
-            }
-            if (Y == 1) {
-                matrix[0][0] += 1;
-                matrix[1][0] += 1;
-            }
-            if (Y == 2) {
-                matrix[0][1] += 1;
-                matrix[1][1] += 1;
-            }
-        } else {
-            matrix[0][0] += 2;
+    static void performOperationOnMatrix(int[][] matrix, int X, int Y) {
+        for (int i = 0; i < matrix[0].length; i++) {
+            matrix[X - 1][i] += 1;
+        }
+        for (int i = 0; i < matrix.length; i++) {
+            matrix[i][Y - 1] += 1;
         }
     }
 
